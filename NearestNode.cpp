@@ -2,9 +2,9 @@
 
 TreeNode *Amazon_successor(TreeNode *root, int value)
 {
-	TreeNode *pRet = root;
 	if (root == NULL)
 		return NULL;
+	TreeNode *pRet = root;
 	if (value < root->val) {
 		TreeNode *pNode = Amazon_successor(root->left, value);
 		if (pNode != NULL)
@@ -17,13 +17,17 @@ TreeNode *Amazon_successor(TreeNode *root, int value)
 				pRet : pNode;
 	} else {
 		TreeNode *pNode1 = Amazon_successor(root->left, value);
-		if (pNode1 != NULL)
-			pRet = abs(pRet->val - value) < abs(pNode1->val - value) ?
-				pRet : pNode1;
 		TreeNode *pNode2 = Amazon_successor(root->right, value);
-		if (pNode2 != NULL)
-			pRet = abs(pRet->val - value) < abs(pNode2->val - value) ?
-				pRet : pNode2;
+		if (pNode1 == NULL && pNode2 == NULL)
+			return NULL;
+		else if (pNode1 && pNode2 == NULL)
+			return pNode1;
+		else if (pNode1 == NULL && pNode2)
+			return pNode2;
+		else
+			pRet = abs(pNode1->val - value) < abs(pNode2->val - value) ?
+				pNode1 : pNode2;
+
 	}
 	return pRet;
 }
