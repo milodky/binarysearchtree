@@ -36,6 +36,39 @@ void NearestTreeNode(TreeNode *root, int val)
 	cout << "value is: " << val << ", nearest node is: " << pRet->val << endl;
 }
 
+#include "BST2LinkedList.cpp"
+
+void Bst2LL(TreeNode *root, int Num)
+{
+	TreeNode *previous = NULL;
+	GetLinkedList(root, previous);
+	TreeNode *pHead;
+	previous = root;
+	while (root) {
+		previous = root;
+		root = root->left;
+	}
+	root = previous;
+	pHead = root;
+	TreeNode *bbst = GetBSTfromLL(pHead, 0, Num - 1);
+	cout << "double linked list: " << endl;
+	while (root) {
+		cout << root->val << " ";
+		root = root->right;
+		delete previous;
+		previous = root;
+	}
+	cout << endl;
+	cout << "Balanced Binary Search tree: " << endl;
+	TreeNode::InOrderPrint(bbst);
+	cout << endl;
+	TreeNode::BFPrint(bbst);
+	cout << endl;
+	TreeNode::DeleteTree(bbst);
+	cout << endl;
+}
+
+
 int main(int argn, char *argv[])
 {
 	int Num = atoi(argv[1]);
@@ -49,8 +82,10 @@ int main(int argn, char *argv[])
 
 //	LargestBST_Test(root);
 //	LCA_Test(root);
-	int RandInt = rand() % 100 + 1;
-	NearestTreeNode(root, RandInt);
+//	int RandInt = rand() % 100 + 1;
+//	NearestTreeNode(root, RandInt);
+//	TreeNode::DeleteTree(root);
 
-	TreeNode::DeleteTree(root);
+	Bst2LL(root, Num);
+
 }
