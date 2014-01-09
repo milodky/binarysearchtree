@@ -22,6 +22,8 @@ public:
 	static void InOrderPrint(TreeNode *);
 	static void BFPrint(TreeNode*);
 	static void DeleteTree(TreeNode *);
+	static void PreOrderPrint(TreeNode *);
+
 
 	vector<TreeNode *> holder;
 	

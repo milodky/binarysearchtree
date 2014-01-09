@@ -105,6 +105,16 @@ void TreeNode::BFPrint(TreeNode *root)
 }
 
 
+void TreeNode::PreOrderPrint(TreeNode *root)
+{
+	if (root == NULL) {
+		cout << "# ";
+		return;
+	}
+	cout << root->val << " ";
+	PreOrderPrint(root->left);
+	PreOrderPrint(root->right);
+}
 
 
 

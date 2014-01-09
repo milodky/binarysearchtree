@@ -68,6 +68,7 @@ void Bst2LL(TreeNode *root, int Num)
 	cout << endl;
 }
 
+#include "CompleteOrNot.cpp"
 
 int main(int argn, char *argv[])
 {
@@ -86,6 +87,13 @@ int main(int argn, char *argv[])
 //	NearestTreeNode(root, RandInt);
 //	TreeNode::DeleteTree(root);
 
-	Bst2LL(root, Num);
-
+//	Bst2LL(root, Num);
+	TreeNode::PreOrderPrint(root);
+	cout << endl;
+	bool flag = IsComplete(root);
+	if (flag == true)
+		cout << "Yes.";
+	else
+		cout << "No.";
+	cout << endl;
 }
