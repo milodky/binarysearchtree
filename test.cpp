@@ -70,6 +70,9 @@ void Bst2LL(TreeNode *root, int Num)
 
 #include "CompleteOrNot.cpp"
 
+#include "VisitByLayer.cpp"
+
+
 int main(int argn, char *argv[])
 {
 	int Num = atoi(argv[1]);
@@ -96,4 +99,6 @@ int main(int argn, char *argv[])
 	else
 		cout << "No.";
 	cout << endl;
+
+	VisitByLayer(root);
 }

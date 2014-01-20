@@ -9,7 +9,7 @@ $(TARGET): $(OBJS)
 	$(CC) -o $@ $(OBJS)
 $(OBJS): $(HDRS)
 
-%.o: %.cpp
+%.o%.cpp:
 	$(CC) -c -Wall $<
 
 .PHONY: run clean
