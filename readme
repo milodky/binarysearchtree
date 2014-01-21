@@ -1,3 +1,5 @@
 created a binary tree class
 
 implemented some tree-based algorithms
+
+corrected a bug in finding the largest sub-bst function

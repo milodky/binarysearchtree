@@ -78,13 +78,13 @@ int main(int argn, char *argv[])
 	int Num = atoi(argv[1]);
 	TreeNode *root = new TreeNode(50);
 	srand(time(NULL));
-	root->BuildTree(Num, BST);
+	root->BuildTree(Num, GENERAL);
 	TreeNode::InOrderPrint(root);
 	cout << endl;
 	TreeNode::BFPrint(root);
 	cout << endl << endl;
 
-//	LargestBST_Test(root);
+	LargestBST_Test(root);
 //	LCA_Test(root);
 //	int RandInt = rand() % 100 + 1;
 //	NearestTreeNode(root, RandInt);
@@ -93,12 +93,12 @@ int main(int argn, char *argv[])
 //	Bst2LL(root, Num);
 	TreeNode::PreOrderPrint(root);
 	cout << endl;
-	bool flag = IsComplete(root);
-	if (flag == true)
-		cout << "Yes.";
-	else
-		cout << "No.";
-	cout << endl;
+//	bool flag = IsComplete(root);
+//	if (flag == true)
+//		cout << "Yes.";
+//	else
+//		cout << "No.";
+//	cout << endl;
 
 	VisitByLayer(root);
 }

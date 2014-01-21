@@ -16,14 +16,18 @@ static int LargestBST(TreeNode *root, int &mymin, int &mymax, int &MaxCnt, TreeN
 	int ret = -1;
 	bool IsBst = true;
 	int left = LargestBST(root->left, mymin, mymax, MaxCnt, TheRoot);
+	int CurrentMin = (left == 0) ? root->val : mymin;
 	if (left == -1 || (left != 0 && root->val < mymax))
 		IsBst = false; 
 	int right = LargestBST(root->right, mymin, mymax, MaxCnt, TheRoot);
+	int CurrentMax = (right == 0) ? root->val : mymax;
 	if (right == -1 || (right != 0 && mymin <= root->val))
 		IsBst = false;
 	if (IsBst) {
-		mymin = (left == 0) ? root->val : mymin;
-		mymax = (right == 0) ? root->val : mymax;
+		mymin = CurrentMin;
+		mymax = CurrentMax;
+//		mymin = (left == 0) ? root->val : mymin;
+//		mymax = (right == 0) ? root->val : mymax;
 		ret = left + right + 1;
 		if (MaxCnt < ret) {
 			MaxCnt = ret;
@@ -54,11 +58,11 @@ int findLargestBSTSubtree(TreeNode *root, int &min, int &max,
 	bool isBST = true;
 	int leftNodes = findLargestBSTSubtree(root->left, min, max, maxNodes, largestBST);
 	int currMin = (leftNodes == 0) ? root->val : min;
-	if (leftNodes == -1 || (leftNodes != 0 && root->val <= max))
+	if (leftNodes == -1 || (leftNodes != 0 && (root->val < min || root->val < max)))
 		isBST = false;
 	int rightNodes = findLargestBSTSubtree(root->right, min, max, maxNodes, largestBST);
 	int currMax = (rightNodes == 0) ? root->val : max;
-	if (rightNodes == -1 || (rightNodes != 0 && root->val >= min))
+	if (rightNodes == -1 || (rightNodes != 0 && (root->val >= min || root->val > max)))
 		isBST = false;
 	if (isBST) {
 		min = currMin;
